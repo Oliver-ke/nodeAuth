@@ -1,3 +1,3 @@
 module.exports = {
-    MongoURI: `mongodb://oliver:oliver96@cluster0-shard-00-00-onmll.mongodb.net:27017,cluster0-shard-00-01-onmll.mongodb.net:27017,cluster0-shard-00-02-onmll.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`
+    MongoURI: `mongodb://oliver:<YOUR PASS>@cluster0-shard-00-00-onmll.mongodb.net:27017,cluster0-shard-00-01-onmll.mongodb.net:27017,cluster0-shard-00-02-onmll.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true`
 }
