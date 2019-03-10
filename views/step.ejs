@@ -1,0 +1,115 @@
+
+  
+<div class="row mt-5">
+    <div class="card border-secondary dark col-md-12 p-0 mb-3">
+        <div class=" m-0 text-center card-header"> <h1>Added Steps</h1></div>
+       <% if(steps.length > 0) { %>
+            <% steps.forEach((step) => { %>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="card text-white bg-primary col-md-11 ml-auto mr-auto card-body mb-3">
+                            <div class="row">
+                                    <div class="card-text col-md-8">
+                                        <H3>Name: <%= step.name %> | Group: <%= step.groupName %></H3>
+                                    </div>
+                                    <div class=" col-md-2">
+                                       <form action="/step/<%= step._id %>" method="POST">
+                                            <button type="submit" class="btn btn-danger btn-lg btn-block">Delete</button>
+                                       </form>
+                                    </div>
+                                    <div class=" col-md-2">
+                                            <button type="button" class="btn btn-secondary btn-lg btn-block">Edit</button>
+                                    </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+           <% }) %>
+        <% }%>
+
+        <% if(!groups.length > 0) { %>
+            <h3 class="ml-5 mb-5 mt-5">No Step found</h3>
+        <% } %>
+     </div>
+</div>
+
+<div class="row mt-3 mb-3">
+<div class="col-md-12">
+        <div class="row col-md-12 mt-2">
+                <div class="col-md-8  mr-auto mb-5">
+                    <div class="card card-body">
+                        <% include ./partials/messages %>
+                        <h1 class="text-center mb-3">
+                            Add Step
+                        </h1>
+                        <form enctype="multipart/form-data" id="stepform" action="/step" method="POST">
+                     
+                            <div class="form-group">
+                                    <label for="name">Step Name</label>
+                                    <input 
+                                        type="name"
+                                        autocomplete="off"
+                                        id="name"
+                                        placeholder="Enter name"
+                                        name="name"
+                                        class="form-control"
+                                        value="<%= typeof name != 'undefined' ? name : '' %>"
+                                    />
+                            </div>
+
+                            <div class="form-group">
+                                    <label for="name">Step No</label>
+                                    <input 
+                                        type="number"
+                                        autocomplete="off"
+                                        id="stepNo"
+                                        placeholder="Enter a number"
+                                        name="stepNo"
+                                        class="form-control"
+                                        value="<%= typeof stepNo != 'undefined' ? stepNo : '' %>"
+                                    />
+                            </div>
+                            
+                            <div class="form-group">
+                                    <label for="name">Description</label>
+                                    <input 
+                                        type="text"
+                                        autocomplete="off"
+                                        id="Description"
+                                        placeholder="Describe Step"
+                                        name="description"
+                                        class="form-control"
+                                        value="<%= typeof description != 'undefined' ? description : '' %>"
+                                    />
+                            </div>
+
+                            <div class="form-group">
+                                    <label for="name">Add and Image</label>
+                                    <input 
+                                        type="file"
+                                        id="imgUrl"
+                                        placeholder="Select Image"
+                                        name="imgUrl"
+                                        class="form-control-file"
+                                        value="<%= typeof imgUrl != 'undefined' ? imgUrl : '' %>"
+                                    />
+                            </div>
+                            <div class="form-group">
+                                    <label for="categories">Select Category</label>
+                                    <select id="group" name="groupName" class="form-control" id="group">
+                                        <% if(groups.length > 0) { %>
+                                            <% groups.forEach((item) =>{ %>
+                                                <option name="<%= item.name %>"  value="<%= item.name %>"><%= item.name %></option>
+                                           <% }) %>
+                                        <% } %>
+                                    </select>
+                                  </div>
+                            <button type="submit" class="btn btn-primary btn-block">Add</button>
+                        </form> 
+                    </div>
+                </div>
+        </div>
+</div>
+</div>
+
+  

@@ -17,10 +17,12 @@ mongoose.connect(db,{useNewUrlParser:true})
     .then(() => console.log('MongoDb connected..'))
     .catch(err => console.log(err));
 
-//EJS
+//EJS 
 app.use(expressLayout);
 app.set('view engine', 'ejs');
-
+app.set('layout', 'layouts/authlayout');
+app.use("/static",express.static(__dirname + '/static'));
+app.use('/upload',express.static('upload'))
 //bodyparser-> this is now built into express
 app.use(express.urlencoded({extended: false}));
 
